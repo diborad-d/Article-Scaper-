@@ -1,48 +1,35 @@
-require("dotenv").config();
-var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+var axios = require("axios");
+var cheerio = require("cheerio");
+var request = require("request");
+var mongoose = require("mongoose");
+var logger = require("morgan");
 
-var db = require("./models");
-
+var express = require("express");
 var app = express();
-var PORT = process.env.PORT || 3000;
 
-// Middleware
+app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(process.cwd() + "/public"));
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
+var exhbs = require("express-handlebars");
+app.engine("handlebars", exhbs({ defaultLayout: "man" }));
 app.set("view engine", "handlebars");
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
-var syncOptions = { force: false };
-
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
-
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+mongoose.connect(
+  "mongodb://localhost/articleScraper",
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+  }
+);
+var db = mongoose.connection;
+db.on("error", function() {
+  console.log("connected to Mongodb!");
 });
 
-module.exports = app;
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("server running on " + port);
+});
