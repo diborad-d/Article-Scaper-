@@ -3,23 +3,37 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+        {{!-- <h2>This is our Home Page!</h2> --}}
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Article Scraper</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="sass.html">Articles</a></li>
+              <li><a href="badges.html">Browse</a></li>
+            </ul>
+          </div>
+        </nav>
+        <br>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <input type="text" id="article-text" class="form-control" aria-describedby="article-text"
+              placeholder="Enter Article Text">
+            <label for="article-text">leave your comments here:</label>
+
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <textarea class="form-control" id="article-description" aria-describedby="article-description"
+              placeholder="Enter article Description"></textarea>
+            <label for="article-description">Article Description</label>
+
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
+        <h3>Saved Articles: </h3>
+        <ul id="article-list" class="list-group">
+          {{#each articles}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
+            <a href="article/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
