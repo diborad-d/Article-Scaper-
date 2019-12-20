@@ -1,0 +1,47 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        {{!-- <h2>This is our Home Page!</h2> --}}
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Article Scraper</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="sass.html">Articles</a></li>
+              <li><a href="badges.html">Browse</a></li>
+            </ul>
+          </div>
+        </nav>
+        <br>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <input type="text" id="article-text" class="form-control" aria-describedby="article-text"
+              placeholder="Enter Article Text">
+            <label for="article-text">leave your comments here:</label>
+
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="article-description" aria-describedby="article-description"
+              placeholder="Enter article Description"></textarea>
+            <label for="article-description">Article Description</label>
+
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Saved Articles: </h3>
+        <ul id="article-list" class="list-group">
+          {{#each articles}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="article/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

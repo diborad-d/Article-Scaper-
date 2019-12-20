@@ -1,34 +1,22 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "article-scraper",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "All the News That's Fit to Scrape",
   "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint **/*.js --quiet",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diborad-d/Article-Scaper-.git"
+  },
+  "author": "Dibora Dagne",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.3",
-    "dotenv": "^6.0.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "mongoose": "^5.8.1",
-    "morgan": "^1.9.1",
-    "mysql2": "^1.5.3",
-    "request": "^2.88.0"
+  "bugs": {
+    "url": "https://github.com/diborad-d/Article-Scaper-/issues"
   },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "mocha": "^5.2.0",
-    "prettier": "^1.13.7"
-  }
+  "homepage": "https://github.com/diborad-d/Article-Scaper-#readme"
 }

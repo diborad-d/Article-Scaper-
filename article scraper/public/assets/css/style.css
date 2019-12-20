@@ -1,0 +1,45 @@
+body {
+  background-size: 600px;
+  font-family: "Oswald", sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, sans-serif;
+  font-size: 16px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  text-align: justify;
+}
+main {
+  flex: 1 0 auto;
+}
+.nav-wrapper.topnav.h2 {
+  height: 20px;
+}
+.articleBody {
+  height: 400px;
+  font-size: 20px;
+  overflow-y: scroll;
+  line-height: 150%;
+}
+#btnSignUp {
+  background-color: #258191;
+}
+#nameComment {
+  /*border-bottom: 2px solid #ec407a;*/
+  font-weight: bold;
+  background: #258191;
+  color: white;
+}
+.input-field input[type="text"]:focus + label {
+  color: #258191;
+}
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid #258191;
+  box-shadow: 0 1px 0 0 #000;
+}
+.input-field .prefix.active {
+  color: #258191;
+}
+.topnav {
+  background-color: #258191;
+  
+}
