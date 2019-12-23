@@ -55,11 +55,14 @@ router.get("/scrape", function(req, res) {
   });
 });
 router.get("/articles", function(req, res) {
+  
   Article.find()
     .sort({ _id: -1 })
     .exec(function(err, doc) {
       if (err) {
         console.log(err);
+        res.render(err);
+        //render something here
       } else {
         var artcl = { article: doc };
         res.render("index", artcl);
@@ -138,11 +141,7 @@ router.post("/comment/:id", function(req, res) {
       console.log(doc._id);
       console.log(articleId);
 
-      Article.findOneAndUpdate(
-        { _id: req.params.id },
-        { $push: { comment: doc._id } },
-        { new: true }
-      ).exec(function(err, doc) {
+      Article.findOneAndUpdate({ _id: req.params.id }, { $push: { comment: doc._id } }, { new: true }).exec(function(err, doc) {
         if (err) {
           console.log(err);
         } else {
