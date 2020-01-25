@@ -97,6 +97,7 @@ router.get("/readArticle/:id", function(req, res) {
     article: [],
     body: []
   };
+  console.log(articleId);
 
   Article.findOne({ _id: articleId })
     .populate("comment")
@@ -106,10 +107,13 @@ router.get("/readArticle/:id", function(req, res) {
       } else {
         hbsObj.article = doc;
         var link = doc.link;
+        console.log(link);
         request(link, function(error, response, html) {
+          // console.log(html)
           var $ = cheerio.load(html);
+          console.log("loaded")
 
-          $(".l-col__main").each(function(i, element) {
+          $(".grid--item").each(function(i, element) {
             hbsObj.body = $(this)
               .children(".c-entry-content")
               .children("p")
@@ -119,6 +123,7 @@ router.get("/readArticle/:id", function(req, res) {
             return false;
           });
         });
+       
       }
     });
 });
